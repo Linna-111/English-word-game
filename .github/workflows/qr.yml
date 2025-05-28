@@ -1,0 +1,16 @@
+name: Generate QR Code
+on: [push]
+
+jobs:
+  generate-qr:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: crazy-max/ghaction-qrcode@v2
+        with:
+          text: "https://linna-111.github.io/English-word-game/"
+          output: qr.png
+      - uses: actions/upload-artifact@v3
+        with:
+          name: qr-code
+          path: qr.png
